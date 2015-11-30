@@ -3,72 +3,90 @@
         <title>Google</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                    <!--LIBRARY-->
-        <script src="assets/lib/loadsh.js" type="text/javascript"></script>
+        <!--LIBRARY-->
+        <script src="assets/lib/loadsh.js" type="text/javascript"></script> 
         <script src="assets/lib/angular.js" type="text/javascript"></script>
         <script src="assets/lib/angular-google-maps/node_modules/angular-simple-logger/dist/angular-simple-logger.js" type="text/javascript"></script>
         <script src="assets/lib/angular-google-maps/dist/angular-google-maps.min.js" type="text/javascript"></script>
-        
-                            <!--CONTROLLER AND MODULE-->
-        
+
+        <!--CONTROLLER AND MODULE-->
+
         <script src="map/map.module.js" type="text/javascript"></script>       
         <script src="map/map.controller.js" type="text/javascript"></script>
-        
-                                 <!--CSS-->              
-        
+
+
+        <!--CSS-->              
+
         <link  href="assets/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link  href="assets/css/map.css" rel="stylesheet" type="text/css"/>
+        <link  href="assets/css/footer.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div ng-app="mapsApp" ng-controller="MapCtrl">
             <div class="navbar-wrapper">
-                <nav class="navbar navbar-inverse"></nav>
+                <nav class="navbar navbar-inverse"></nav>           
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-4">
-                            <div class="panel panel-info">
+                            <div class="panel panel-success">
 
-                                <div class="panel-heading">TASK 1</div><div class="panel-body">
+                                <div class="panel-heading">Enter Your Address</div><div class="panel-body">
                                     <form name="google" method="POST" role="form">
-                                        <h2> Address </h2>
-                                        <div class="form-group">
-                                            <input type="text" required="" ng-model="address" placeholder="enter your address" class="form-control">
+                                        <div class=".inner-addon.right-addon">
+                                            <i class="glyphicon glyphicon-pencil"></i>
+                                            <h2> Address </h2>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" required="" ng-model="state" placeholder="enter your state" class="form-control">
+                                            <div class="inner-addon left-addon">
+                                                <i class="glyphicon glyphicon-map-marker"></i>
+
+                                                <input type="text" required="" ng-model="address" placeholder="Enter Your Address" class="form-control">
+                                            </div></div>
+                                        <div class="form-group">
+<!--                                            <div class="inner-addon left-addon">
+                                                <i class="glyphicon glyphicon-home"></i>-->
+                                                <input type="text" required="" ng-model="state" placeholder="Enter Your State" class="form-control">
+<!--                                            </div>-->
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" required="" ng-model="pin" placeholder="enter your pin" class="form-control">
+                                            <input type="text" required="" ng-model="pin" placeholder="Enter Your Pin" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" required="" ng-model="country" placeholder="enter your country" class="form-control">
-                                        </div>
-                                        <button class="btn btn-lg btn-success btn-block" id="loginId" ng-model="login" ng-click="submitData();" ng-disabled="google.$invalid">Submit</button>    
-                                    </form></div>
+                                            <div class="inner-addon left-addon">
+                                                <i class="glyphicon glyphicon-home"></i>
+                                                <input type="text" required="" ng-model="country" placeholder="Enter Your Country" class="form-control">
+                                            </div></div>
+                                        <button class="btn btn-lg btn-success btn-block" id="loginId" ng-model="login" ng-click="submitData();">Submit</button>    
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="panel panel-danger">
+                                <div class="panel-heading">
+                                    Latitude:{{lat}}<br/>
+                                    Longitude:{{long}}
+                                </div>
                             </div>
                         </div>
                         <div class="col-sm-8">
-                            <div class="panel panel-body panel-info">
+                            <div class="panel panel-success">
+                                <div class="panel-heading">Google Map</div>
                                 <ui-gmap-google-map center='map.center' zoom='map.zoom'>
                                     <ui-gmap-marker idkey="marker.id" coords="marker.coords" options="marker.options" click="onClick()" events="marker.events" >
                                         <ui-gmap-window options="windowOptions" closeClick="closeClick()">
-                                            <div>{{title}}</div>
+                                            <div>{{address}}</div>
                                         </ui-gmap-window>
                                     </ui-gmap-marker>
                                     <ui-gmap-layer type="TransitLayer" show="show"></ui-gmap-layer>
-                            </div>
-                            </ui-gmap-google-map>
-                            <div class="panel panel-success">
-                                <div class="panel-heading">
-                                    latitude:{{lat}}<br/>
-                                    longitude:{{long}}
-                                </div>
+                                </ui-gmap-google-map> 
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </body>
+        <div id="footer">
+            <p class="muted credit">Copyright© Excellence Technologies</p>
+        </div>
 
+    </body>
 </html>

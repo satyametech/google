@@ -14,7 +14,7 @@
                     id: 0
                 };
                 $scope.submitData = function() {
-                    alert("Click!!!");
+                    // alert("Click!!!");
                     var first = $scope.address;
                     var second = $scope.state;
                     var third = $scope.pin;
@@ -23,14 +23,14 @@
                     function google(first, second, third, fourth) {
                         var add;
                         var def = $q.defer();
-                        add = first + ' ' + second + ' ' + third + ' ' + fourth;
-//                        console.log(add);
-                        $http.post('http://maps.googleapis.com/maps/api/geocode/json?address=' + add + 'key=AIzaSyCZJMm5aP5dU7VQj_9QKit3byk3afjm0yM').then(function(data) {
+                        add = first + ' ' + second +' '+ third +' '+ fourth;
+                        console.log(add);
+                        $http.post('https://maps.googleapis.com/maps/api/geocode/json?address=' + add + '&key=AIzaSyCd6VPMPM-ZABfVeeHslkAi_Tp4tUvRTac').then(function(data) {
                             def.resolve(data);
                             console.log(data);
-                            var res = data.data.results[0].geometry;
-                            var lati = res.bounds.northeast.lat;
-                            var longi = res.bounds.northeast.lng;
+                            var res = data.data.results[0].geometry.location;
+                            var lati = res.lat;
+                            var longi = res.lng;
                             console.log(lati);
                             console.log(longi);
                             $scope.lat = lati;
