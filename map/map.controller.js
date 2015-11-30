@@ -14,7 +14,6 @@
                     id: 0
                 };
                 $scope.submitData = function() {
-                    // alert("Click!!!");
                     var first = $scope.address;
                     var second = $scope.state;
                     var third = $scope.pin;
@@ -32,7 +31,7 @@
                         {
                             add = first + ' ' + second;
                         }
-                        
+                        +
                         console.log(add);
                         $http.post('https://maps.googleapis.com/maps/api/geocode/json?address=' + add + '&key=AIzaSyCd6VPMPM-ZABfVeeHslkAi_Tp4tUvRTac').then(function(data) {
                             def.resolve(data);
